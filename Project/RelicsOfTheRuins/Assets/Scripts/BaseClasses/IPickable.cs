@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RelicsOfTheRuins.Pickable
 {
-    public interface Pickable
+    public interface IPickable
     {
         public void Pick();
     }
