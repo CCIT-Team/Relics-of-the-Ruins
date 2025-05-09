@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/SampleScene.unity
+- path: "Assets/WorkStation/\uAE40\uB300\uD55C/Movemants.unity"
   isLoaded: 1
   isActive: 1
   isSubScene: 0
