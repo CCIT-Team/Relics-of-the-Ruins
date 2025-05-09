@@ -4,13 +4,16 @@ using UnityEngine;
 
 namespace RelicsOfTheRuins.ArmorBase
 {
-    public abstract class ArmorBase
+    public abstract class ArmorBase : ItemBase.ItemBase
     {
         protected int def;
         protected eArmorPos.eArmorPos _pos;
         protected eArmorType.eArmorType _type;
 
-        public abstract int GetDefStatus();
+        public int GetDefStatus()
+        {
+            return def;
+        }
 
         public eArmorPos.eArmorPos GetArmorPos()
         {

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace RelicsOfTheRuins.WeaponBase
 {
-    public abstract class WeaponBase
+    public abstract class WeaponBase : ItemBase.ItemBase
     {
         protected int damage;
         protected eWeaponType.eWeaponType _weaponType;
