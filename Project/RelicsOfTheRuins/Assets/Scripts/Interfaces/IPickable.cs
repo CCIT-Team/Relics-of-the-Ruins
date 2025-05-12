@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RelicsOfTheRuins.Pickable
+namespace RelicsOfTheRuins.Interfaces
 {
     public interface IPickable
     {

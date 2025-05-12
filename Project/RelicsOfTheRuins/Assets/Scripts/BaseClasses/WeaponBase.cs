@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RelicsOfTheRuins.WeaponBase
+namespace RelicsOfTheRuins.BaseClasses
 {
-    public abstract class WeaponBase : ItemBase.ItemBase
+    public abstract class WeaponBase : BaseClasses.ItemBase
     {
         protected int damage;
-        protected eWeaponType.eWeaponType _weaponType;
+        protected Enumerators.eWeaponType _weaponType;
         protected float cooldown;
 
         public abstract void Attack(int damageMultiplier);
@@ -16,7 +16,7 @@ namespace RelicsOfTheRuins.WeaponBase
         public abstract IEnumerator StartCoolDown();
       
         
-        public eWeaponType.eWeaponType GetWeaponType()
+        public Enumerators.eWeaponType GetWeaponType()
         {
             return _weaponType;
         }

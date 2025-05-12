@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RelicsOfTheRuins.eArmorPos
+namespace RelicsOfTheRuins.Enumerators
 {
     public enum eArmorPos
     {

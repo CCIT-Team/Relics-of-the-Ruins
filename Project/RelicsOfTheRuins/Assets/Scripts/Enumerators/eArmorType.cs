@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RelicsOfTheRuins.eArmorType
+namespace RelicsOfTheRuins.Enumerators
 {
     public enum eArmorType
     {

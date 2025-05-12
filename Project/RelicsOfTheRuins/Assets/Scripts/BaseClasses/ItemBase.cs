@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using RelicsOfTheRuins;
 
-namespace RelicsOfTheRuins.ItemBase
+namespace RelicsOfTheRuins.BaseClasses
 {
-    public abstract class ItemBase : IUsableObject.IUsableObject, Pickable.IPickable
+    public abstract class ItemBase : Interfaces.IPickable , Interfaces.IUsableObject
     {
         protected int maxStack;
-        protected eItemType.eItemType _itemType;
+        protected Enumerators.eItemType _itemType;
         protected int itemPrice;
         protected Transform parentAfterDrag;
         protected Image image;
@@ -21,7 +22,7 @@ namespace RelicsOfTheRuins.ItemBase
             return maxStack;
         }
 
-        public eItemType.eItemType GetItemType()
+        public Enumerators.eItemType GetItemType()
         {
             return _itemType;
         }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RelicsOfTheRuins.IUsableObject
+namespace RelicsOfTheRuins.Interfaces
 {
     public interface IUsableObject
     {

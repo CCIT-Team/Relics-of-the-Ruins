@@ -1,26 +1,27 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RelicsOfTheRuins.ArmorBase
+namespace RelicsOfTheRuins.BaseClasses
 {
-    public abstract class ArmorBase : ItemBase.ItemBase
+    public abstract class ArmorBase : BaseClasses.ItemBase
     {
         protected int def;
-        protected eArmorPos.eArmorPos _pos;
-        protected eArmorType.eArmorType _type;
+        protected Enumerators.eArmorPos _pos;
+        protected Enumerators.eArmorType _type;
 
         public int GetDefStatus()
         {
             return def;
         }
 
-        public eArmorPos.eArmorPos GetArmorPos()
+        public Enumerators.eArmorPos GetArmorPos()
         {
             return _pos;
         }
 
-        public eArmorType.eArmorType GetArmorType()
+        public Enumerators.eArmorType GetArmorType()
         {
             return _type;
         }
