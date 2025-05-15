@@ -11,11 +11,6 @@ namespace RelicsOfTheRuins.DependencyInjection
 
         private void Awake()
         {
-            if(_injectionTargets == null)
-            {
-                _injectionTargets = new Injectable[0];
-            }
-
             ExplorerDataHub dataHubInstance = new ExplorerDataHub();
 
             if(dataHubInstance == null)
@@ -23,7 +18,12 @@ namespace RelicsOfTheRuins.DependencyInjection
                 return;
             }
 
-            foreach(Injectable target in _injectionTargets)
+            if (_injectionTargets == null)
+            {
+                _injectionTargets = new Injectable[0];
+            }
+            
+            foreach (Injectable target in _injectionTargets)
             {
                 target.Inject(dataHubInstance);
             }

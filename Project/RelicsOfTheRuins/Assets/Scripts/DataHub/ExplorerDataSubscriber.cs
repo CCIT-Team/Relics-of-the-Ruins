@@ -5,34 +5,31 @@ namespace RelicsOfTheRuins.DataHub
 {
     public class ExplorerDataSubscriber : Injectable
     {
-        private GameObject _nowExplorer;
-
         public override void Inject(ExplorerDataHub instance)
         {
+            if (instance == null)
+            {
+                return;
+            }
+
             _dataHub = instance;
             _dataHub.Subscribe(this);
         }
 
-        public void ReceiveUpdate(GameObject explorer)
-        {
-            
-            
-            
-            
-            Debug.Log($"test : received : {explorer.Equals(_nowExplorer)} {explorer.name}");
-            
-            
-            
-            _nowExplorer = explorer;
+        public virtual void ReceiveUpdate(GameObject explorer)
+        { 
         }
 
-        private void OnDestroy()
+        protected void Awake()
         {
-            if(_dataHub == null)
+            if (_dataHub == null)
             {
-                return;
+                _dataHub = new ExplorerDataHub();
             }
-            
+        }
+
+        protected void OnDestroy()
+        {
             _dataHub.UnSubscribe(this);
         }
     }
