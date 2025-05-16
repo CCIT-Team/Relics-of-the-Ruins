@@ -8,18 +8,18 @@ namespace RelicsOfTheRuins.BaseClasses
 {
     public abstract class ItemBase : Interfaces.IPickable , Interfaces.IUsableObject
     {
-        protected int maxStack;
+        protected int _maxStack;
         protected Enumerators.eItemType _itemType;
-        protected int itemPrice;
-        protected Transform parentAfterDrag;
-        protected Image image;
+        protected int _itemPrice;
+        protected Transform _parentAfterDrag;
+        protected Image _image;
 
         public abstract void Use(GameObject[] targets);
         public abstract void Pick();
 
         public int GetItemMaxStack()
         {
-            return maxStack;
+            return _maxStack;
         }
 
         public Enumerators.eItemType GetItemType()
@@ -29,7 +29,7 @@ namespace RelicsOfTheRuins.BaseClasses
 
         public int GetItemPrice()
         {
-            return itemPrice;
+            return _itemPrice;
         }
 
     }
