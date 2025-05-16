@@ -92,7 +92,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3208111185162008495
 RectTransform:
   m_ObjectHideFlags: 0
@@ -109,7 +109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 610, y: 266}
+  m_AnchoredPosition: {x: 610, y: 270}
   m_SizeDelta: {x: 700, y: 540}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &443569332430513706
@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 2353865980526966938}
   - component: {fileID: 7151661835759658346}
   m_Layer: 5
-  m_Name: PlayerStatusBoundary (1)
+  m_Name: PlayerMapBoundary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
