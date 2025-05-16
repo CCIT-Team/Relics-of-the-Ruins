@@ -8,9 +8,9 @@ public class MoveWithNavMeshBase : MonoBehaviour
     protected NavMeshAgent _agent;
     protected Transform _target;
     protected IDestinationSelector _settingDestinationStrategy;
-    public void SetStrategy(IDestinationSelector strategy)
+    public void SetStrategy(in IDestinationSelector inStrategy)
     {
-           _settingDestinationStrategy = strategy;
+           _settingDestinationStrategy = inStrategy;
     }
     public void StartMoving()
     {
