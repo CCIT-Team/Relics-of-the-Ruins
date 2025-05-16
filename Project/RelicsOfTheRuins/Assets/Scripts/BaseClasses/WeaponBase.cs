@@ -7,9 +7,9 @@ namespace RelicsOfTheRuins.BaseClasses
 {
     public abstract class WeaponBase : BaseClasses.ItemBase
     {
-        protected int damage;
+        protected int _damage;
         protected Enumerators.eWeaponType _weaponType;
-        protected float cooldown;
+        protected float _cooldown;
 
         public abstract void Attack(int damageMultiplier);
 
