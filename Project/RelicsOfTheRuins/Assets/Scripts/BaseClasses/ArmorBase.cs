@@ -7,13 +7,13 @@ namespace RelicsOfTheRuins.BaseClasses
 {
     public abstract class ArmorBase : BaseClasses.ItemBase
     {
-        protected int def;
+        protected int _def;
         protected Enumerators.eArmorPos _pos;
         protected Enumerators.eArmorType _type;
 
         public int GetDefStatus()
         {
-            return def;
+            return _def;
         }
 
         public Enumerators.eArmorPos GetArmorPos()
