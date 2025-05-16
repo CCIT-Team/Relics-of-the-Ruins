@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\daeha\\OneDrive\\\uBB38\uC11C\\GitHub\\Relics-of-the-Ruins\\Project\\RelicsOfTheRuins\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5C69857C-9AAF-C344-400C-31480DDEF886}|Assembly-CSharp.csproj|c:\\users\\daeha\\onedrive\\\uBB38\uC11C\\github\\relics-of-the-ruins\\project\\relicsoftheruins\\assets\\navmeshes\\chasemovewithnavmesh.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5C69857C-9AAF-C344-400C-31480DDEF886}|Assembly-CSharp.csproj|solutionrelative:assets\\navmeshes\\chasemovewithnavmesh.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ChaseMoveWithNavMesh.cs",
+              "DocumentMoniker": "C:\\Users\\daeha\\OneDrive\\\uBB38\uC11C\\GitHub\\Relics-of-the-Ruins\\Project\\RelicsOfTheRuins\\Assets\\NavMeshes\\ChaseMoveWithNavMesh.cs",
+              "RelativeDocumentMoniker": "Assets\\NavMeshes\\ChaseMoveWithNavMesh.cs",
+              "ToolTip": "C:\\Users\\daeha\\OneDrive\\\uBB38\uC11C\\GitHub\\Relics-of-the-Ruins\\Project\\RelicsOfTheRuins\\Assets\\NavMeshes\\ChaseMoveWithNavMesh.cs*",
+              "RelativeToolTip": "Assets\\NavMeshes\\ChaseMoveWithNavMesh.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwYAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-16T01:17:34.21Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
