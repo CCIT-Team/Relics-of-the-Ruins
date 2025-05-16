@@ -1,3 +1,4 @@
+using System.Diagnostics.Contracts;
 using RelicsOfTheRuins.DependencyInjection;
 using UnityEngine;
 
@@ -27,7 +28,7 @@ namespace RelicsOfTheRuins.DataHub
                 _dataHub = new ExplorerDataHub();
             }
         }
-
+        
         protected void OnDestroy()
         {
             _dataHub.UnSubscribe(this);

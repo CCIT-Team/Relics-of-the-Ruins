@@ -5,31 +5,10 @@ namespace RelicsOfTheRuins.DataHub
 {
     public class ExplorerDataHub
     {
-        private GameObject _nowStoredExplorer;
         private List<ExplorerDataSubscriber> _subscribers = new List<ExplorerDataSubscriber>();
 
         private List<ExplorerDataSubscriber> _deleteQueue = new List<ExplorerDataSubscriber>();
         private bool _bIsIterating = false;
-
-        private void BroadcastUpdate()
-        {
-            _bIsIterating = true;
-
-            foreach (ExplorerDataSubscriber target in _subscribers)
-            {
-                target.ReceiveUpdate(_nowStoredExplorer);
-            }
-
-            foreach (ExplorerDataSubscriber target in _deleteQueue)
-            {
-                _subscribers.Remove(target);
-            }
-
-            _deleteQueue.Clear();
-
-            _bIsIterating = false;
-        }
-
         public void Subscribe(ExplorerDataSubscriber subscriber)
         {
             if (!_subscribers.Contains(subscriber))
@@ -52,9 +31,21 @@ namespace RelicsOfTheRuins.DataHub
 
         public void Publish(GameObject explorer)
         {
-            _nowStoredExplorer = explorer;
-            BroadcastUpdate();
-        }
+            _bIsIterating = true;
 
+            foreach (ExplorerDataSubscriber target in _subscribers)
+            {
+                target.ReceiveUpdate(explorer);
+            }
+
+            foreach (ExplorerDataSubscriber target in _deleteQueue)
+            {
+                _subscribers.Remove(target);
+            }
+
+            _deleteQueue.Clear();
+
+            _bIsIterating = false;
+        }
     }
 }
