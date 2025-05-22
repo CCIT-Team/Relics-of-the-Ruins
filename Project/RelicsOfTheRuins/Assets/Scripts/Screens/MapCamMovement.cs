@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace RelicsOfTheRuins.Screens
@@ -17,27 +15,24 @@ namespace RelicsOfTheRuins.Screens
 
         public void InitPos(Vector3 pos)
         {
-            if (pos == null)
-            {
-                pos = _initialPos;
-            }
-
+            Debug.Log(pos);
             transform.position = pos;
         }
 
         void Awake()
         {
             _mapCam = GetComponent<Camera>();
-            transform.position = _initialPos;
+            transform.SetParent(null);
+            InitPos(_initialPos);
         }
 
         // Update is called once per frame
         void Update()
         {
-            _movementBuffer.y = Input.GetAxis("Vertical") * _movementSpeed;
-            _movementBuffer.x = Input.GetAxis("Horizontal") * _movementSpeed;
+            _movementBuffer.y = Input.GetAxis("Vertical");
+            _movementBuffer.x = Input.GetAxis("Horizontal");
 
-            transform.Translate(_movementBuffer);
+            transform.Translate(_movementBuffer * Time.deltaTime * _movementSpeed);
 
         }
     }

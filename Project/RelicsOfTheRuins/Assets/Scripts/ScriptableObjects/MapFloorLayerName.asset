@@ -9,8 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 213b18b69cb9ee747b7bd35cffd92f22, type: 3}
-  m_Name: KeyCodeData
+  m_Script: {fileID: 11500000, guid: e008aaae88bcc8c4ea01eb7d34414f9b, type: 3}
+  m_Name: MapFloorLayerName
   m_EditorClassIdentifier: 
-  keyUpperFloor: 61
-  keyLowerFloor: 45
+  LayerNames:
+  - Floor1
+  - Floor2
+  - Floor3
+  - Floor4
+  - Floor5
+  - Floor6
+  - Floor7
