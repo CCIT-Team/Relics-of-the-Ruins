@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 213b18b69cb9ee747b7bd35cffd92f22, type: 3}
   m_Name: KeyCodeData
   m_EditorClassIdentifier: 
-  keyUpperFloor: 61
-  keyLowerFloor: 45
+  keyUpperFloor: 46
+  keyLowerFloor: 44

@@ -15,7 +15,6 @@ namespace RelicsOfTheRuins.Screens
 
         public void InitPos(Vector3 pos)
         {
-            Debug.Log(pos);
             transform.position = pos;
         }
 

@@ -10,6 +10,9 @@ namespace RelicsOfTheRuins.Screens
         [SerializeField]
         private KeyCodeData _keyCodeData;
 
+        [SerializeField]
+        private UpdateFloorText _updateFloorText;
+
         private int _nowFloorLayerMask = -1;
         private int _nowFloorIndex = 0;
 
@@ -18,6 +21,7 @@ namespace RelicsOfTheRuins.Screens
         {
             _nowFloorLayerMask = LayerMask.GetMask(layerName);
             _mapCam.cullingMask = _nowFloorLayerMask;
+            _updateFloorText.UpdateText(layerName);
         }
 
         private void Awake()
