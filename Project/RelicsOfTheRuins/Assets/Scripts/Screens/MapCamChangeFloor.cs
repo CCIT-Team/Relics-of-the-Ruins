@@ -1,3 +1,4 @@
+using RelicsOfTheRuins.Interfaces;
 using RelicsOfTheRuins.ScriptableObjects;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ namespace RelicsOfTheRuins.Screens
         private KeyCodeData _keyCodeData;
 
         [SerializeField]
-        private UpdateFloorText _updateFloorText;
+        private GameObject[] _receivers;
 
         private int _nowFloorLayerMask = -1;
         private int _nowFloorIndex = 0;
@@ -21,7 +22,12 @@ namespace RelicsOfTheRuins.Screens
         {
             _nowFloorLayerMask = LayerMask.GetMask(layerName);
             _mapCam.cullingMask = _nowFloorLayerMask;
-            _updateFloorText.UpdateText(layerName);
+
+            foreach (GameObject obj in _receivers)
+            {
+                ILayerMaskReceiver target = obj.GetComponent<ILayerMaskReceiver>();
+                target.UpdateLayerMask(layerName);
+            }
         }
 
         private void Awake()

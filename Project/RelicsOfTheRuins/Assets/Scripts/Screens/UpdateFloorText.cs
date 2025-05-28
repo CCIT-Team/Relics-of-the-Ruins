@@ -1,20 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
+using RelicsOfTheRuins.Interfaces;
+using RelicsOfTheRuins.Screens;
 using TMPro;
 using UnityEngine;
 
-public class UpdateFloorText : MonoBehaviour
+public class UpdateFloorText : MonoBehaviour, ILayerMaskReceiver
 {
     private TextMeshProUGUI _tmp;
-    // Start is called before the first frame update
+    private string _layerName;
 
-    public void UpdateText(in string layerName)
+    public void UpdateLayerMask(in string layerName)
     {
-        _tmp.text = layerName;
+        _layerName = layerName;
     }
 
     void Awake()
     {
         _tmp = GetComponent<TextMeshProUGUI>();
+    }
+
+    void Update()
+    {
+        _tmp.text = _layerName;
     }
 }

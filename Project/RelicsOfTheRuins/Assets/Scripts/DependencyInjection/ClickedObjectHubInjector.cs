@@ -1,10 +1,9 @@
 using RelicsOfTheRuins.DataHub;
-using RelicsOfTheRuins.Interfaces;
 using UnityEngine;
 
 namespace RelicsOfTheRuins.DependencyInjection
 {
-    public class DataHubInjector : MonoBehaviour
+    public class ClickedObjectHubInjector : MonoBehaviour
     {
         //[Space]
         [SerializeField]
@@ -12,7 +11,7 @@ namespace RelicsOfTheRuins.DependencyInjection
 
         private void Awake()
         {
-            ExplorerDataHub dataHubInstance = new ExplorerDataHub();
+            ClickedObjectHub dataHubInstance = new ClickedObjectHub();
 
             if(dataHubInstance == null)
             {
@@ -26,7 +25,7 @@ namespace RelicsOfTheRuins.DependencyInjection
             
             foreach (GameObject obj in _injectionTargets)
             {
-                IExplorerDataHubInjectable target = obj.GetComponent<IExplorerDataHubInjectable>();
+                IClickedObjectHubInjectable target = obj.GetComponent<IClickedObjectHubInjectable>();
                 target.Inject(dataHubInstance);
             }
         }

@@ -15,6 +15,11 @@ namespace RelicsOfTheRuins.Screens
 
             if (camTmp == null)
             {
+                camTmp = explorer.GetComponentInChildren<Camera>();
+            }
+
+            if (camTmp == null)
+            {
                 return;
             }
 
@@ -22,7 +27,6 @@ namespace RelicsOfTheRuins.Screens
             {
                 _nowCam = camTmp;
             }
-
             _nowCam.targetTexture = null;
             camTmp.targetTexture = _bodyCamRenderTexture;
             _nowCam = camTmp;
