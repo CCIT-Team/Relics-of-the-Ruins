@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 
 namespace RelicsOfTheRuins.ScriptableObjects
 {
@@ -9,7 +6,7 @@ namespace RelicsOfTheRuins.ScriptableObjects
     public class MapCamOptions : ScriptableObject
     {
         public float zoomInMax = 0;
-        public float zoomOutMax = 10;
+        public float zoomOutMax = 50;
         public float defaultZoom = 5;
     }
 }

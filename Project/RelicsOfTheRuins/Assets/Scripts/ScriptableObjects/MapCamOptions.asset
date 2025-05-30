@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: MapCamOptions
   m_EditorClassIdentifier: 
   zoomInMax: 0
-  zoomOutMax: 10
+  zoomOutMax: 50
   defaultZoom: 5

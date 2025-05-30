@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -10,5 +8,7 @@ namespace RelicsOfTheRuins.ScriptableObjects
     {
         public KeyCode keyUpperFloor;
         public KeyCode keyLowerFloor;
+        public KeyCode[] explorerKeyCode;
+        public KeyCode[] cameraKeyCode;
     }
 }

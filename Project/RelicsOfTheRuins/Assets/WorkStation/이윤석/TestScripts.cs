@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
+using RelicsOfTheRuins.MapIconObjects;
 using UnityEngine;
 
 public class TestScripts : MonoBehaviour
@@ -17,8 +19,9 @@ public class TestScripts : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(_test);
-            _test.transform.position = transform.position;
+            var tmp = gameObject.GetComponent<MarkerInterlinker>();
+            Destroy(tmp.GetLinkedObject());
+            Destroy(gameObject);
         }
     }
 }

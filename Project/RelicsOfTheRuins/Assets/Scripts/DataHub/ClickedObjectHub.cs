@@ -21,24 +21,23 @@ namespace RelicsOfTheRuins.DataHub
             InitBundle();
         }
 
-        public void PackEventObject(ref GameObject refClickedObject, Vector3 rayHitPosition, PointerEventData.InputButton mouseButton)
+        public void PackEventObject(GameObject clickedObject, Vector3 rayHitPosition, PointerEventData.InputButton mouseButton)
         {
             if (mouseButton == PointerEventData.InputButton.Left)
             {
-                _argumentBundle.leftClickedObject = refClickedObject;
+                _argumentBundle.leftClickedObject = clickedObject;
                 _argumentBundle.leftClickedRayHitPosition = rayHitPosition;
             }
             else if (mouseButton == PointerEventData.InputButton.Right)
             {
-                _argumentBundle.rightClickedObject = refClickedObject;
+                _argumentBundle.rightClickedObject = clickedObject;
                 _argumentBundle.rightClickedRayHitPosition = rayHitPosition;
             }
         }
 
         public void ProcessArgumentBundle()
         {
-            //명령어 처리기에 보내는 함수
-            
+            //명령어 전달 스크립트 만들기
             InitBundle();
         }
 

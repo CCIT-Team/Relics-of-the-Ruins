@@ -25,8 +25,11 @@ namespace RelicsOfTheRuins.DependencyInjection
             
             foreach (GameObject obj in _injectionTargets)
             {
-                IClickedObjectHubInjectable target = obj.GetComponent<IClickedObjectHubInjectable>();
-                target.Inject(dataHubInstance);
+                IClickedObjectHubInjectable[] targetLists = obj.GetComponents<IClickedObjectHubInjectable>();
+                foreach (IClickedObjectHubInjectable target in targetLists)
+                {
+                    target.Inject(dataHubInstance);
+                }
             }
         }
     }

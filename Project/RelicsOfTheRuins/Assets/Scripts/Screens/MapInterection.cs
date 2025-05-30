@@ -1,13 +1,15 @@
+using System.Linq;
 using RelicsOfTheRuins.DataHub;
 using RelicsOfTheRuins.DependencyInjection;
 using RelicsOfTheRuins.Interfaces;
+using RelicsOfTheRuins.MapIconObjects;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace RelicsOfTheRuins.Screens
 {
-    public class MapInterection : MonoBehaviour,  ILayerMaskReceiver, IClickedObjectHubInjectable,IPointerClickHandler
+    public class MapInterection : MonoBehaviour,  ILayerMaskReceiver, IClickedObjectHubInjectable,IPointerClickHandler, IExplorerDataHubInjectable
     {
         private Vector2 _canvasClickPoint;
         private Vector2 _coordinateCalibrationValue;
@@ -26,7 +28,10 @@ namespace RelicsOfTheRuins.Screens
         private ClickedObjectHub _clickedObjectHub;
 
         private GameObject _hitObject;
-
+        private ExplorerDataHub _explorerDataHub;
+        [SerializeField]
+        private string[] _explorerDataHubPublishableTag;
+        
         public void UpdateLayerMask(in string layerName)
         {
             _layerMask = LayerMask.GetMask(layerName);
@@ -35,6 +40,11 @@ namespace RelicsOfTheRuins.Screens
         public void Inject(ClickedObjectHub instance)
         {
             _clickedObjectHub = instance;
+        }
+
+        public void Inject(ExplorerDataHub instance)
+        {
+            _explorerDataHub = instance;
         }
 
         public void OnPointerClick(PointerEventData eventData)
@@ -57,14 +67,32 @@ namespace RelicsOfTheRuins.Screens
                 return;
             }
 
-            _hitObject = _hit.collider.gameObject;
-            _clickedObjectHub.PackEventObject(ref _hitObject, _hit.point, eventData.button);
-            //원본 오브젝트가 있는 좌표로의 변환은 다른곳에서 처리
+            if (_hit.collider == null || _hit.collider.gameObject == null)
+            {
+                return;
+            }
+
+            MarkerInterlinker markerLinker = _hit.collider.gameObject.GetComponent<MarkerInterlinker>();
+
+            _hitObject = null;
+
+            if (markerLinker != null)
+            {
+                _hitObject = markerLinker.GetLinkedObject();
+            }
+
+            _clickedObjectHub.PackEventObject(_hitObject, _hit.point, eventData.button);
 
             if (eventData.button == PointerEventData.InputButton.Right)
             {
                 _clickedObjectHub.ProcessArgumentBundle();
             }
+
+            if (_hitObject != null && _explorerDataHubPublishableTag.Contains(_hitObject.tag))
+            {
+                _explorerDataHub.Publish(_hitObject);
+            }
+
         }
 
         void Awake()

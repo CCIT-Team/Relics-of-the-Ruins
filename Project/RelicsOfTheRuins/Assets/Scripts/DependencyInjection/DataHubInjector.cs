@@ -23,11 +23,14 @@ namespace RelicsOfTheRuins.DependencyInjection
             {
                 _injectionTargets = new GameObject[0];
             }
-            
+
             foreach (GameObject obj in _injectionTargets)
             {
-                IExplorerDataHubInjectable target = obj.GetComponent<IExplorerDataHubInjectable>();
-                target.Inject(dataHubInstance);
+                IExplorerDataHubInjectable[] targetLists = obj.GetComponents<IExplorerDataHubInjectable>();
+                foreach (IExplorerDataHubInjectable target in targetLists)
+                {
+                    target.Inject(dataHubInstance);
+                }
             }
         }
     }
