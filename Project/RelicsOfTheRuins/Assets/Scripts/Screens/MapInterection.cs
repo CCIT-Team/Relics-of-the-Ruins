@@ -89,8 +89,7 @@ namespace RelicsOfTheRuins.Screens
             {
                 _clickedObjectHub.ProcessArgumentBundle();
             }
-
-            if (_hitObject != null && _tags._explorerDataHubPublishableTag.Contains(_hitObject.tag))
+            else if (_hitObject != null && _tags._explorerDataHubPublishableTag.Contains(_hitObject.tag))
             {
                 _explorerDataHub.Publish(_hitObject);
             }
