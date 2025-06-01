@@ -3,17 +3,22 @@ using UnityEngine;
 
 namespace RelicsOfTheRuins.DependencyInjection
 {
-    public class ClickedObjectHubInjector : MonoBehaviour
+    public class ClickedObjectHubInjector : MonoBehaviour, IClickedObjectHubInjectable
     {
         //[Space]
         [SerializeField]
         private GameObject []_injectionTargets;
 
-        private void Awake()
-        {
-            ClickedObjectHub dataHubInstance = new ClickedObjectHub();
+        private ClickedObjectHub _dataHubInstance;
 
-            if(dataHubInstance == null)
+        public void Inject(ClickedObjectHub instance)
+        {
+            _dataHubInstance = instance;
+        }
+
+        private void Start()
+        {
+            if(_dataHubInstance == null)
             {
                 return;
             }
@@ -28,7 +33,7 @@ namespace RelicsOfTheRuins.DependencyInjection
                 IClickedObjectHubInjectable[] targetLists = obj.GetComponents<IClickedObjectHubInjectable>();
                 foreach (IClickedObjectHubInjectable target in targetLists)
                 {
-                    target.Inject(dataHubInstance);
+                    target.Inject(_dataHubInstance);
                 }
             }
         }

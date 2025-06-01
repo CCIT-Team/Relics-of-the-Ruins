@@ -4,17 +4,21 @@ using UnityEngine;
 
 namespace RelicsOfTheRuins.DependencyInjection
 {
-    public class DataHubInjector : MonoBehaviour
+    public class DataHubInjector : MonoBehaviour, IExplorerDataHubInjectable
     {
         //[Space]
         [SerializeField]
-        private GameObject []_injectionTargets;
+        private GameObject[] _injectionTargets;
+        private ExplorerDataHub _dataHubInstance;
 
-        private void Awake()
+        public void Inject(ExplorerDataHub instance)
         {
-            ExplorerDataHub dataHubInstance = new ExplorerDataHub();
+            _dataHubInstance = instance;
+        }
 
-            if(dataHubInstance == null)
+        private void Start()
+        {
+            if (_dataHubInstance == null)
             {
                 return;
             }
@@ -29,7 +33,7 @@ namespace RelicsOfTheRuins.DependencyInjection
                 IExplorerDataHubInjectable[] targetLists = obj.GetComponents<IExplorerDataHubInjectable>();
                 foreach (IExplorerDataHubInjectable target in targetLists)
                 {
-                    target.Inject(dataHubInstance);
+                    target.Inject(_dataHubInstance);
                 }
             }
         }
