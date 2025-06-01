@@ -3,6 +3,7 @@ using RelicsOfTheRuins.DataHub;
 using RelicsOfTheRuins.DependencyInjection;
 using RelicsOfTheRuins.Interfaces;
 using RelicsOfTheRuins.MapIconObjects;
+using RelicsOfTheRuins.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -29,8 +30,9 @@ namespace RelicsOfTheRuins.Screens
 
         private GameObject _hitObject;
         private ExplorerDataHub _explorerDataHub;
+
         [SerializeField]
-        private string[] _explorerDataHubPublishableTag;
+        private Tags _tags;
         
         public void UpdateLayerMask(in string layerName)
         {
@@ -88,7 +90,7 @@ namespace RelicsOfTheRuins.Screens
                 _clickedObjectHub.ProcessArgumentBundle();
             }
 
-            if (_hitObject != null && _explorerDataHubPublishableTag.Contains(_hitObject.tag))
+            if (_hitObject != null && _tags._explorerDataHubPublishableTag.Contains(_hitObject.tag))
             {
                 _explorerDataHub.Publish(_hitObject);
             }

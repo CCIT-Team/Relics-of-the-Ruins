@@ -1,18 +1,24 @@
+using System.Linq;
 using RelicsOfTheRuins.DataContainer;
 using RelicsOfTheRuins.DataHub;
 using RelicsOfTheRuins.DependencyInjection;
+using RelicsOfTheRuins.Interfaces;
 using RelicsOfTheRuins.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace RelicsOfTheRuins.Screens
 {
-    public class UnitSelectionWithKey : MonoBehaviour, IClickedObjectHubInjectable
+    public class UnitSelectionWithKey : MonoBehaviour, IClickedObjectHubInjectable, IExplorerDataHubInjectable
     {
         [SerializeField]
         private ExplorationUnitContainer _unitContainer;
 
         private ClickedObjectHub _clickedObjectHub;
+        private ExplorerDataHub _explorerDataHub;
+        
+        [SerializeField]
+        private Tags _tags;
 
         [SerializeField]
         KeyCodeData _keyCodeData;
@@ -22,6 +28,11 @@ namespace RelicsOfTheRuins.Screens
         public void Inject(ClickedObjectHub instance)
         {
             _clickedObjectHub = instance;
+        }
+
+        public void Inject(ExplorerDataHub instance)
+        {
+            _explorerDataHub = instance;
         }
 
 
@@ -58,6 +69,12 @@ namespace RelicsOfTheRuins.Screens
             }
 
             _clickedObjectHub.PackEventObject(_clickedObject, Vector3.zero, PointerEventData.InputButton.Left);
+            
+            if (_tags._explorerDataHubPublishableTag.Contains(_clickedObject.tag))
+            {
+                _explorerDataHub.Publish(_clickedObject);
+            }
+
         }
     }
 
