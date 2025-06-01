@@ -1229,9 +1229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mapCam: {fileID: 2040616506}
   _rayLength: 500
-  _explorerDataHubPublishableTag:
-  - Explorer
-  - Camera
+  _tags: {fileID: 11400000, guid: 66a8c417362cbfb468e56bbd19ec5442, type: 2}
 --- !u!114 &923999762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1257,6 +1255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unitContainer: {fileID: 1934970424}
+  _tags: {fileID: 11400000, guid: 66a8c417362cbfb468e56bbd19ec5442, type: 2}
   _keyCodeData: {fileID: 11400000, guid: 5dc3dfe0602cab0439abefb13ddfb2e7, type: 2}
 --- !u!1 &948149119
 GameObject:
@@ -1414,7 +1413,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0.38888884, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1481,13 +1480,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1157772980}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.3287843, y: 0, z: 0, w: 0.9444051}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 381298751}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -38.39, y: 0, z: 0}
 --- !u!81 &1157772982
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1874,6 +1873,8 @@ GameObject:
   - component: {fileID: 1935665867}
   - component: {fileID: 1935665866}
   - component: {fileID: 1935665868}
+  - component: {fileID: 1935665869}
+  - component: {fileID: 1935665870}
   m_Layer: 0
   m_Name: TEST_Injector
   m_TagString: Untagged
@@ -1925,6 +1926,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _injectionTargets:
   - {fileID: 923999758}
+--- !u!114 &1935665869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935665865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a7614b787e436940b4d01943ef5ccff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _injectionTargets: []
+--- !u!114 &1935665870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935665865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f62b01b6dc170b4fa395f82e86e4332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explorerDataHubInjector: {fileID: 1935665866}
+  _clickedObjectHubInjector: {fileID: 1935665868}
+  _commandExecuterInjector: {fileID: 1935665869}
 --- !u!1 &1976086869
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,12 +1,16 @@
+using RelicsOfTheRuins.Commands;
 using RelicsOfTheRuins.DataExchangeBundles;
+using RelicsOfTheRuins.Interfaces;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace RelicsOfTheRuins.DataHub
 {
-    public class ClickedObjectHub
+    public class ClickedObjectHub : ICommandExecuterInjectable
     {
         private MapCommandArgumentBundle _argumentBundle;
+
+        private CommandExecuter _commandExecuter;
 
         private void InitBundle()
         {
@@ -33,14 +37,21 @@ namespace RelicsOfTheRuins.DataHub
                 _argumentBundle.rightClickedObject = clickedObject;
                 _argumentBundle.rightClickedRayHitPosition = rayHitPosition;
             }
+
+            Debug.Log($"{_argumentBundle.leftClickedObject == null} {_argumentBundle.rightClickedObject == null}");
+
         }
 
         public void ProcessArgumentBundle()
         {
-            //명령어 전달 스크립트 만들기
+            _commandExecuter.Execute(ref _argumentBundle);
             InitBundle();
         }
 
-
+        public void Inject(CommandExecuter instance)
+        {
+            _commandExecuter = instance;
+        }
+        
     }
 }
