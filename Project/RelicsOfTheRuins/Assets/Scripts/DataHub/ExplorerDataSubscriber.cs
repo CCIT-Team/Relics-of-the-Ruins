@@ -1,12 +1,12 @@
-using System.Diagnostics.Contracts;
-using RelicsOfTheRuins.DependencyInjection;
+using RelicsOfTheRuins.Interfaces;
 using UnityEngine;
 
 namespace RelicsOfTheRuins.DataHub
 {
-    public class ExplorerDataSubscriber : Injectable
+    public class ExplorerDataSubscriber : MonoBehaviour, IExplorerDataHubInjectable
     {
-        public override void Inject(ExplorerDataHub instance)
+        ExplorerDataHub _dataHub;
+        public void Inject(ExplorerDataHub instance)
         {
             if (instance == null)
             {
