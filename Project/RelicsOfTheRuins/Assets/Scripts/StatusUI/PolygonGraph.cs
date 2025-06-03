@@ -1,7 +1,8 @@
+using RelicsOfTheRuins.DataHub;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PolygonGraph : Graphic
+public class PolygonGraph : ExplorerDataSubscriberUIObject
 {
     private const int _statusCnt = 6;
     private Vector2 _vertexPos;
@@ -15,6 +16,11 @@ public class PolygonGraph : Graphic
     {
         _status = status;
         SetAllDirty();
+    }
+
+    public override void ReceiveUpdate(GameObject explorer)
+    {
+        //스탯 뽑아와서 업데이트하는 로직
     }
 
     protected override void OnPopulateMesh(VertexHelper vh)
@@ -44,7 +50,7 @@ public class PolygonGraph : Graphic
 
     }
 
-    protected override void Awake()
+    protected override void Start()
     {
         for (int i = 1; i <= _statusCnt; i++)
         {
