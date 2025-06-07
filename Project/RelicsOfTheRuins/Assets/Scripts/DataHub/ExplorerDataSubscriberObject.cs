@@ -21,7 +21,7 @@ namespace RelicsOfTheRuins.DataHub
         {
         }
 
-        protected void Awake()
+        protected virtual void Awake()
         {
             if (_dataHub == null)
             {
