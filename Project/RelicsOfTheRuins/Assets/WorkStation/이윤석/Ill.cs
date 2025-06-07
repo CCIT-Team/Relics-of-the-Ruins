@@ -34,9 +34,7 @@ public class Ill : MonoBehaviour
     void Update()
     {
         ColorCalculationUtils.CalculateVitalityColor(ref _color, _hp, _maxHPHalf);
-        float sizeTmp;
-        TransformUtils.CalculateStretchTo(_hp,_maxHP,out sizeTmp, ref postmp.y,min.y,full.y,rect.rect.height,true);
-        size.y = sizeTmp;
+        TransformUtils.CalculateStretchTo(_hp,_maxHP,out size.y, ref postmp.y,min.y,full.y,rect.rect.height,true);
         rect.position = postmp;
         rect.sizeDelta = size;
 
