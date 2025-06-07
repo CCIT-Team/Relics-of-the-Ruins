@@ -22,24 +22,9 @@ namespace RelicsOfTheRuins.StatusUI
             Debug.Log("HealthPointGraph does not implemented ReceiveUpdate\nPlease implement explorer healthPoint class!");
         }
 
-        private void CalculateColor(ref Color refColor, int hp)
-        {
-            if (hp >= _maxHPHalf)
-            {
-                refColor.r = Mathf.Lerp(1, 0, (hp - _maxHPHalf) / _maxHPHalf);
-            }
+        //colorcalc클래스로 색 계산 기능 이전
 
-            if (hp <= _maxHPHalf)
-            {
-                refColor.g = Mathf.Lerp(0, 1, hp / _maxHPHalf);
-            }
-        }
-
-        private void CalculatePos(int hp)
-        {
-            _posTmp.y = Mathf.Lerp(_minHPPos.y, _maxHPPos.y, hp / _maxHP);
-            _recttransform.position = _posTmp;
-        }
+        //TransformUtils클래스로 늘리기 계산 기능 이전
 
         private void InitHPValues(int maxHP, int hp)
         {
