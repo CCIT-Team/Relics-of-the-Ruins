@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using RelicsOfTheRuins.Utilities;
 using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
@@ -8,59 +9,38 @@ using UnityEngine.EventSystems;
 public class Ill : MonoBehaviour
 {
     CanvasRenderer ren;
+    RectTransform rect;
 
-    [SerializeField]
-    int _hp = 100;
-    [SerializeField]
-    float maxhp = 100;
+    Vector3 size, full, postmp, min=Vector3.zero;
 
-    float maxhphalf;
+    public float _maxHP = 100,_maxHPHalf;
+    public int _hp = 0;
 
-    Vector3 pos1,pos2,pos;
-
-    Color col = Color.white;
-
-    RectTransform rectt;
-
-    void CalculateColor(ref Color color, int hp)
-    {
-        if (hp >= maxhphalf)
-        {
-            color.r = Mathf.Lerp(1, 0, (hp - maxhphalf) / maxhphalf);
-        }
-
-        if (hp <= maxhphalf)
-        {
-            color.g = Mathf.Lerp(0, 1, hp / maxhphalf);
-        }
-    }
-
-    void CalculatePos(int hp)
-    {
-        pos.y = Mathf.Lerp(pos2.y, pos1.y, hp / maxhp);
-        rectt.position = pos;
-    }
+    private Color _color = Color.black;
 
     void Awake()
     {
-        rectt = GetComponent<RectTransform>();
+        rect = GetComponent<RectTransform>();
         ren = GetComponent<CanvasRenderer>();
-        maxhphalf = maxhp / 2;
-        col.a = 1;
-        col.r = Mathf.Lerp(1, 0, (_hp - maxhphalf) / maxhphalf);
-        col.g = Mathf.Lerp(0, 1, _hp / maxhphalf);
-        col.b = 0;
-        pos1 = rectt.position;
-        pos2 = rectt.position;
-        pos2.y -= rectt.rect.height;
-        pos = pos1;
+        size = full = rect.rect.size;
+        postmp = rect.position;
+        _maxHPHalf = _maxHP / 2;
+        _color.r = Mathf.Lerp(1, 0, (_hp - _maxHPHalf) / _maxHPHalf);
+        _color.g = Mathf.Lerp(0, 1, _hp / _maxHPHalf);
     }
+
+    
 
     void Update()
     {
-        CalculatePos(_hp);
-        CalculateColor(ref col, _hp);
-        ren.SetColor(col);
+        ColorCalculationUtils.CalculateVitalityColor(ref _color, _hp, _maxHPHalf);
+        TransformUtils.CalculateStretchTo(_hp,_maxHP,out size.y, ref postmp.y,min.y,full.y,rect.rect.height,true);
+        rect.position = postmp;
+        rect.sizeDelta = size;
+
+
+
+        ren.SetColor(_color);
     }
 
 
