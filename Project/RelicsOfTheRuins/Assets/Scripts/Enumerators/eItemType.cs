@@ -6,6 +6,6 @@ namespace RelicsOfTheRuins.Enumerators
 {
     public enum eItemType
     {
-
+        DEFAULT_ENUM_TYPE
     }
 }
