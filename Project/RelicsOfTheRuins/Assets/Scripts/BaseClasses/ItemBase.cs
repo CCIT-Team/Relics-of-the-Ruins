@@ -16,7 +16,9 @@ namespace RelicsOfTheRuins.BaseClasses
         private int _itemPrice = 0;
 
         [SerializeField]
-        private int _itemSize = 1;
+        private int _itemYSize = 1;
+        [SerializeField]
+        private int _itemXSize = 1;
 
 
         [SerializeField]
@@ -60,11 +62,19 @@ namespace RelicsOfTheRuins.BaseClasses
             }
         }
 
-        public int ItemSize
+        public int ItemYSize
         {
             get
             {
-                return _itemSize;
+                return _itemYSize;
+            }
+        }
+
+        public int ItemXSize
+        {
+            get
+            {
+                return _itemXSize;
             }
         }
 
