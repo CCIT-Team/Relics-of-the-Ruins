@@ -4,12 +4,9 @@ using UnityEngine;
 
 namespace RelicsOfTheRuins.Enumerators
 {
-    public enum eItemType
+    public enum eWeaponAttackMode
     {
-        Weapon,
-        Equipment,
-        Consumable,
-        Relic,
-        Tool
+        SingleTarget,   // ´ÜÀÏ
+        AreaOfEffect    // ±¤¿ª
     }
 }

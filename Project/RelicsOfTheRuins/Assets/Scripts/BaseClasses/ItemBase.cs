@@ -8,26 +8,26 @@ namespace RelicsOfTheRuins.BaseClasses
     public abstract class ItemBase : MonoBehaviour, IDroppableObject, IPickableObject, IUsableObject
     {
         [SerializeField]
-        private int _maxItemStack=1;
+        protected int _maxItemStack=1;
 
-        private int _nowItemStack = 0;
-
-        [SerializeField]
-        private int _itemPrice = 0;
+        protected int _nowItemStack = 0;
 
         [SerializeField]
-        private int _itemYSize = 1;
+        protected int _itemPrice = 0;
+
         [SerializeField]
-        private int _itemXSize = 1;
+        protected int _itemYSize = 1;
+        [SerializeField]
+        protected int _itemXSize = 1;
 
 
         [SerializeField]
-        private eItemType _itemType = eItemType.DEFAULT_ENUM_TYPE;
+        protected eItemType _itemType;
 
         [SerializeField]
-        private GameObject _prefab2D = null;
+        protected GameObject _prefab2D = null;
         [SerializeField]
-        private GameObject _prefab3D = null;
+        protected GameObject _prefab3D = null;
 
         
 
