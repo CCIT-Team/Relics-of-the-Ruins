@@ -1,15 +1,16 @@
 using System.Collections.Generic;
+using RelicsOfTheRuins.Interfaces;
 using UnityEngine;
 
 namespace RelicsOfTheRuins.DataHub
 {
     public class ExplorerDataHub
     {
-        private List<ExplorerDataSubscriber> _subscribers = new List<ExplorerDataSubscriber>();
+        private List<IExplorerDataSubscriber> _subscribers = new List<IExplorerDataSubscriber>();
 
-        private List<ExplorerDataSubscriber> _deleteQueue = new List<ExplorerDataSubscriber>();
+        private List<IExplorerDataSubscriber> _deleteQueue = new List<IExplorerDataSubscriber>();
         private bool _bIsIterating = false;
-        public void Subscribe(ExplorerDataSubscriber subscriber)
+        public void Subscribe(IExplorerDataSubscriber subscriber)
         {
             if (!_subscribers.Contains(subscriber))
             {
@@ -17,7 +18,7 @@ namespace RelicsOfTheRuins.DataHub
             }
         }
 
-        public void UnSubscribe(ExplorerDataSubscriber subscriber)
+        public void UnSubscribe(IExplorerDataSubscriber subscriber)
         {
             if (_bIsIterating)
             {
@@ -33,12 +34,12 @@ namespace RelicsOfTheRuins.DataHub
         {
             _bIsIterating = true;
 
-            foreach (ExplorerDataSubscriber target in _subscribers)
+            foreach (IExplorerDataSubscriber target in _subscribers)
             {
                 target.ReceiveUpdate(explorer);
             }
 
-            foreach (ExplorerDataSubscriber target in _deleteQueue)
+            foreach (IExplorerDataSubscriber target in _deleteQueue)
             {
                 _subscribers.Remove(target);
             }

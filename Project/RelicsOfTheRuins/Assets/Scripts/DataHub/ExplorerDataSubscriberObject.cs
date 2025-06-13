@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace RelicsOfTheRuins.DataHub
 {
-    public class ExplorerDataSubscriber : MonoBehaviour, IExplorerDataHubInjectable
+    public class ExplorerDataSubscriberObject : MonoBehaviour, IExplorerDataHubInjectable, IExplorerDataSubscriber
     {
         ExplorerDataHub _dataHub;
         public void Inject(ExplorerDataHub instance)
@@ -18,10 +18,10 @@ namespace RelicsOfTheRuins.DataHub
         }
 
         public virtual void ReceiveUpdate(GameObject explorer)
-        { 
+        {
         }
 
-        protected void Awake()
+        protected virtual void Awake()
         {
             if (_dataHub == null)
             {
@@ -31,6 +31,11 @@ namespace RelicsOfTheRuins.DataHub
         
         protected void OnDestroy()
         {
+            if (_dataHub == null)
+            {
+                return;
+            }
+            
             _dataHub.UnSubscribe(this);
         }
     }

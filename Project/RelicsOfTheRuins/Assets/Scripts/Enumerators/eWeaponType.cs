@@ -6,7 +6,8 @@ namespace RelicsOfTheRuins.Enumerators
 {
     public enum eWeaponType
     {
-
+        MELEE,
+        RANGED
     }
 }
 

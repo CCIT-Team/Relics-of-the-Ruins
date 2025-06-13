@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace RelicsOfTheRuins.Screens
 {
-    public class UpdateBodyCam : ExplorerDataSubscriber
+    public class UpdateBodyCam : ExplorerDataSubscriberObject
     {
         [SerializeField]
         private RenderTexture _bodyCamRenderTexture;
