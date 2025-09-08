@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using RelicsOfTheRuins.DataExchangeBundles;
 using UnityEngine;
 
 namespace RelicsOfTheRuins.Interfaces
 {
-    public interface IPickable
+    public interface IDroppableObject
     {
-        public void Pick();
+        public bool Drop(Vector3 targetPos);
     }
 }

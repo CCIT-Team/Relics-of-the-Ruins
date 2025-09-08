@@ -6,6 +6,10 @@ namespace RelicsOfTheRuins.Enumerators
 {
     public enum eItemType
     {
-
+        Weapon,
+        Equipment,
+        Consumable,
+        Relic,
+        Tool
     }
 }
