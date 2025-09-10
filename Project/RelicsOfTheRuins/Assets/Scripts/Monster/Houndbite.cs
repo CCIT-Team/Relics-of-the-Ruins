@@ -2,41 +2,85 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEngine.GraphicsBuffer;
 
 public class HoundBite : MonoBehaviour
 {
-    protected ChaseClass _chaseClass;
+    private Rigidbody _rb;
+    private GameObject _currentTarget;
+    private Vector3 _startPos;
+    public bool _bIsDashing = false;
+    private float _maxDashDistance = 8f;
+    private Rigidbody _targetRb;
     protected IMonsterStats _monsterStats;
     protected void Start()
     {
+        _rb = GetComponent<Rigidbody>();
         _monsterStats = GetComponent<IMonsterStats>();
-        _chaseClass = new ChaseClass(transform);
     }
-    public void AttackHound1()
+    public void AttackHound1(in PlayerHpBase inDamage)
     {
-        Transform targetTransform = _chaseClass.SelectDestination();
-        GameObject targetObject = targetTransform.gameObject;
-        PlayerHpBase damage = targetObject.GetComponent<PlayerHpBase>();
-        if (Vector3.Distance(this.transform.position, targetObject.transform.position) <= 2.5f)
-        {
 
-            damage.TakeDamage(10.0f);
+        inDamage.TakeDamage(_monsterStats.curStrength * 1);
+#if UNITY_EDITOR
+        Debug.Log("예이1");
+#endif
+    }
+
+    public void AttackHound2(in GameObject inTarget)
+    {
+        _startPos = this.transform.position;
+        _currentTarget = inTarget;
+        Vector3 direction = (inTarget.transform.position - this.transform.position).normalized;
+        float distance = Vector3.Distance(this.transform.position, inTarget.transform.position);
+        float force = distance * 1.5f;
+        _rb.AddForce(direction * force, ForceMode.Impulse);
+        _bIsDashing = true;
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        if (_currentTarget == null)
+        {
             return;
+        }
+        if (collision.gameObject == _currentTarget)
+        {
+            _bIsDashing = false;
+            PlayerHpBase damage = _currentTarget.GetComponent<PlayerHpBase>();
+            damage.TakeDamage(_monsterStats.curStrength * 1.5f);
+            Debug.Log("예이2");
+            _rb.velocity = Vector3.zero;
+            Vector3 direction = _currentTarget.transform.position - this.transform.position;
+            direction.y = 0f;
+            direction.Normalize();
+            Vector3 knockbackVelocity = direction * (1f / 0.2f);
+            _targetRb = _currentTarget.GetComponent<Rigidbody>();
+            _targetRb.velocity = knockbackVelocity;
+            StartCoroutine(StopKnockbackAfterTime(0.2f));
+            _currentTarget = null;
+        }
+    }
+    private System.Collections.IEnumerator StopKnockbackAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        if (_targetRb != null)
+        {
+            _targetRb.velocity = Vector3.zero;
+            _targetRb = null;
         }
 
     }
-    /* 나중에 상태머신 뜯어고쳐서 수정 예정
-    public void AttackHound2()
+    private void FixedUpdate()
     {
-        Transform targetTransform = _chaseClass.SelectDestination();
-        GameObject targetObject = targetTransform.gameObject;
-        PlayerHpBase damage = targetObject.GetComponent<PlayerHpBase>();
-        if (Vector3.Distance(this.transform.position, targetObject.transform.position) <=4.0f && 3.0f<=Vector3.Distance(this.transform.position, targetObject.transform.position))
-        {
-            damage.TakeDamage(15.0f);
-            Debug.Log($"몬스터가 플레이어에게 {_monsterStats.curStrength * 1} 데미지를 입힘!");
-            return;
-        }
+        if (_bIsDashing == false) return;
 
-    }*/
+        if (Vector3.Distance(_startPos, this.transform.position) >= _maxDashDistance)
+        {
+            _rb.velocity = Vector3.zero;
+            _currentTarget = null;
+            _bIsDashing = false;
+        }
+    }
+
 }

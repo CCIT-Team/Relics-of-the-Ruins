@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IMonsterStats
 {
-    float attackRange { get; }
+    float[] attackRange { get; }
     float maxHealth { get; }
     float curStrength { get; }
     float defence { get; }

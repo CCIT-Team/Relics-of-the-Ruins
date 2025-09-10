@@ -15,7 +15,7 @@ public class AnimatorBase : MonoBehaviour
         animator = GetComponent<Animator>();
         _monsterStats = GetComponent<IMonsterStats>();
     }
-    public bool bIsCanAttack()
+    public bool CanAttack()
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         NavMeshPath path = new NavMeshPath();
@@ -26,15 +26,18 @@ public class AnimatorBase : MonoBehaviour
             {
                 float pathLength = GetPathLength(path);
 
-                if (pathLength <= _monsterStats.attackRange)
+                foreach (float range in _monsterStats.attackRange)
                 {
-                    return true;
+                    if (pathLength <= range)
+                    {
+                        return true;
+                    }
                 }
             }
         }
         return false;
     }
-    public bool bIsAnyPlayerWithinCost()
+    public bool IsAnyPlayerWithinCost()
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         NavMeshPath path = new NavMeshPath();
@@ -71,11 +74,11 @@ public class AnimatorBase : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (bIsCanAttack() == true)
+        if (CanAttack() == true)
         {
             animator.SetBool("ToAttack", true);
         }
-        else if (bIsAnyPlayerWithinCost() == true && bIsCanAttack()==false)
+        else if (IsAnyPlayerWithinCost() == true && CanAttack()==false)
         {
             animator.SetBool("ToAttack", false);
             animator.SetBool("ToSeek", false);

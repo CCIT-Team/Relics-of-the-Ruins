@@ -964,7 +964,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 90
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!136 &487292544
 CapsuleCollider:
@@ -2276,7 +2276,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 90
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!136 &1109473403
 CapsuleCollider:
@@ -2391,7 +2391,7 @@ Transform:
   m_GameObject: {fileID: 1109473401}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -29.41, y: 5, z: -20.4}
+  m_LocalPosition: {x: -29.41, y: 5, z: -13.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3349,7 +3349,7 @@ GameObject:
   - component: {fileID: 1610658299}
   - component: {fileID: 1610658298}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Hound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3402,7 +3402,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!23 &1610658289
 MeshRenderer:
@@ -3502,7 +3502,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f142bcc7340436c41878fbef8e53488c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  houndAttackRange: 2.5
+  houndAttackRange1: 2
+  houndAttackRange2: 4
+  houndAttackRange3: 8
   houndMaxHp: 30
   strength: 10
   houndDefence: 5
@@ -3568,6 +3570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60c5b5fb41c0d0746a3958e8f7607e9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bIsDashing: 0
 --- !u!1 &1620109986
 GameObject:
   m_ObjectHideFlags: 0
@@ -3960,7 +3963,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 90
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!136 &1798268674
 CapsuleCollider:
@@ -4290,7 +4293,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &1912942831
 MonoBehaviour:
@@ -4458,7 +4461,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 90
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &1926608729
 MonoBehaviour:

@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class HoundStats : MonoBehaviour, IMonsterStats
 {
-    public float houndAttackRange = 2.5f;
-    public float attackRange => houndAttackRange;
+    public float houndAttackRange1 = 2.0f;
+    public float houndAttackRange2 = 4.0f;
+    public float houndAttackRange3 = 8.0f;
+    public float[] attackRange => new float[] { houndAttackRange1, houndAttackRange2, houndAttackRange3 };
+
+
 
     public float houndMaxHp = 30f;
 

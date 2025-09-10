@@ -136,7 +136,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Seek
-  m_Speed: 10
+  m_Speed: 30
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -7327753713281670798}
@@ -249,7 +249,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Chase
-  m_Speed: 10
+  m_Speed: 30
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -8697640978988678863}
