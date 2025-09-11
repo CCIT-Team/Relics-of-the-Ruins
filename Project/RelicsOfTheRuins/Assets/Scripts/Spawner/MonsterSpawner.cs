@@ -21,10 +21,7 @@ namespace RelicsOfRuins.Spawner
         public int SpawnMonster(int min, int max)
         {
             
-            if(_bSpawned)
-            {
-                return 0;
-            }
+            if (_bSpawned) return 0;
 
             int sum = 0; //몬스터들의 각 난도 총합
             int MonsterCount = UnityEngine.Random.Range(1, _spawnPoints.Length + 1); //몬스터 수 정하기
@@ -38,7 +35,6 @@ namespace RelicsOfRuins.Spawner
                 //생성
                 Vector3 SpawnPos = _spawnPoints[i].transform.position;
                 GameObject monster = Instantiate(prefab, SpawnPos, Quaternion.identity);
-                monster.name = $"monster {i}";
 
                 //난도 부여
                 ObjectDifficulty difficulty = monster.GetComponent<ObjectDifficulty>();
@@ -67,6 +63,10 @@ namespace RelicsOfRuins.Spawner
             return sum;
         }
 
+        public override void Spawn()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

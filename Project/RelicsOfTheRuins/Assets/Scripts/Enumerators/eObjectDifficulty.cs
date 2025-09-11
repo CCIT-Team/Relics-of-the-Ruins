@@ -4,7 +4,8 @@ using UnityEngine;
 
 public enum eObjectDifficulty
 {
-    test = 1,
-    test2 = 3
+    dif1 = 1,
+    dif2 = 2,
+    dif5 = 5
     
 }

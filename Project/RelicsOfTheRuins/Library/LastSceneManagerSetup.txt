@@ -1,5 +1,0 @@
-sceneSetups:
-- path: "Assets/WorkStation/\uC720\uAC74\uC6B0/NC.unity"
-  isLoaded: 1
-  isActive: 1
-  isSubScene: 0

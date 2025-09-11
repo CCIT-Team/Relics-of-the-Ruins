@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using RelicsOfRuins.Spawner;
 using UnityEngine;
-
+ 
 public class SpawnerTester : MonoBehaviour
 {
     public MonsterSpawner monsterSpawner;
@@ -11,7 +11,7 @@ public class SpawnerTester : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            int result = monsterSpawner.SpawnMonster(1, 3);
+            int result = monsterSpawner.SpawnMonster(1, 4);
             Debug.Log($"총 {result}의 난도를 가진 몬스터가 생성되었습니다.");
         }
 
