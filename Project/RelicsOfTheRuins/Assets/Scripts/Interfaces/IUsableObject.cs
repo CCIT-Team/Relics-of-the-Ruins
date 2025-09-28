@@ -6,6 +6,6 @@ namespace RelicsOfTheRuins.Interfaces
 {
     public interface IUsableObject
     {
-        public virtual void Use(GameObject[] targets) { }
+        public void Use(GameObject[] targets);
     }
 }
