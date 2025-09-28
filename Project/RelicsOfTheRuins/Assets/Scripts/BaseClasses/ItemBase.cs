@@ -36,6 +36,18 @@ public abstract class ItemBase : MonoBehaviour, IPickableObject, IUsableObject, 
         }
     }
 
+    public int ItemPrice
+    {
+        get
+        {
+            return _data.itemPrice;
+        }
+        set
+        {
+            _data.itemPrice = value;
+        }
+    }
+
     public bool IsEmpty()
     {
         return _data.nowItemStack <= 0;
