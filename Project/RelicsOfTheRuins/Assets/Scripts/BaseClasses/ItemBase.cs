@@ -7,7 +7,10 @@ using UnityEngine;
 public abstract class ItemBase : MonoBehaviour, IPickableObject, IUsableObject, IDroppableObject
 {
     [SerializeField]
-    private ItemDataBundle _data;
+    protected ItemDataBundle _data;
+
+    public string Name { get; set; }
+    public string Description { get; set; }
 
     public int NowItemStack
     {
