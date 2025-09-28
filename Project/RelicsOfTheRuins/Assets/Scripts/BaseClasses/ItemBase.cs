@@ -68,4 +68,9 @@ public abstract class ItemBase : MonoBehaviour, IPickableObject, IUsableObject, 
     {
         return _data;
     }
+
+    public void SetItemDataBundle(ItemDataBundle bundle)
+    {
+        _data = bundle;
+    }
 }
