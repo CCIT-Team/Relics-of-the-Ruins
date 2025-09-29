@@ -56,6 +56,18 @@ public abstract class ItemBase : MonoBehaviour, IPickableObject, IUsableObject, 
         }
     }
 
+    public int ItemRarity
+    {
+        get
+        {
+            return _data.itemRarity;
+        }
+        set
+        {
+            _data.itemRarity = value;
+        }
+    }
+
     public Vector2Int ItemSize
     {
         get

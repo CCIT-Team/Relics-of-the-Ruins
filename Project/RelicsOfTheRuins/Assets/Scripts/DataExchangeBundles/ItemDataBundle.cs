@@ -13,5 +13,6 @@ namespace RelicsOfTheRuins.DataExchangeBundles
         public int nowItemStack;
         public int maxItemStack;
         public int itemPrice;
+        public int itemRarity;
     }
 }
