@@ -2,10 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RelicsOfTheRuins.Enumerators
+public abstract class EquipmentBase : ItemBase
 {
-    public enum eArmorType
-    {
-
-    }
+    
 }

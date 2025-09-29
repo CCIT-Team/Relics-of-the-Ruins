@@ -1,24 +1,16 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RelicsOfTheRuins.BaseClasses
+public abstract class WeaponBase : ItemBase
 {
-    public abstract class WeaponBase : BaseClasses.ItemBase
-    {
-        protected int _damage;
-        protected Enumerators.eWeaponType _weaponType;
-        protected float _cooldown;
+    [SerializeField]
+    protected float _damage = 0;
+    [SerializeField]
+    protected float _cooldown = 0;
+    [SerializeField]
+    protected GameObject _attackAreaObject;
+    protected bool IsCooldownEnd{ get; private set; } = true;
 
-        public abstract void Attack(int damageMultiplier);
-
-        public abstract IEnumerator StartCoolDown();
-      
-        
-        public Enumerators.eWeaponType GetWeaponType()
-        {
-            return _weaponType;
-        }
-    }
+    public abstract void Attack(float damageMultiplier);
 }

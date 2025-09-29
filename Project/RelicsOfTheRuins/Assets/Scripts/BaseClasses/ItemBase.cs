@@ -1,119 +1,104 @@
-using UnityEngine;
-using RelicsOfTheRuins.Interfaces;
+using System.Collections;
+using System.Collections.Generic;
 using RelicsOfTheRuins.DataExchangeBundles;
-using RelicsOfTheRuins.Enumerators;
+using RelicsOfTheRuins.Interfaces;
+using UnityEngine;
 
-namespace RelicsOfTheRuins.BaseClasses
+public abstract class ItemBase : MonoBehaviour, IPickableObject, IUsableObject, IDroppableObject
 {
-    public abstract class ItemBase : MonoBehaviour, IDroppableObject, IPickableObject, IUsableObject
+    [SerializeField]
+    protected ItemDataBundle _data;
+
+    public string Name { get; set; }
+    public string Description { get; set; }
+
+    public eItemTypes ItemType
     {
-        [SerializeField]
-        protected int _maxItemStack=1;
-
-        protected int _nowItemStack = 0;
-
-        [SerializeField]
-        protected int _itemPrice = 0;
-
-        [SerializeField]
-        protected int _itemYSize = 1;
-        [SerializeField]
-        protected int _itemXSize = 1;
-
-
-        [SerializeField]
-        protected eItemType _itemType;
-
-        [SerializeField]
-        protected GameObject _prefab2D = null;
-        [SerializeField]
-        protected GameObject _prefab3D = null;
-
-        
-
-        public int MaxItemStack
+        get
         {
-            get
-            {
-                return _maxItemStack;
-            }
+            return _data.itemType;
         }
+    }
 
-        public int NowItemStack
+    public int NowItemStack
+    {
+        get
         {
-            get
-            {
-                return _nowItemStack;
-            }
-            set
-            {
-                if (value <= _maxItemStack)
-                {
-                    _nowItemStack = value;
-                }
-            }
+            return _data.nowItemStack;
         }
-
-        public int ItemPrice
+        set
         {
-            get
-            {
-                return _itemPrice;
-            }
+            _data.nowItemStack = value;
         }
+    }
 
-        public int ItemYSize
+    public int MaxItemStack
+    {
+        get
         {
-            get
-            {
-                return _itemYSize;
-            }
+            return _data.maxItemStack;
         }
-
-        public int ItemXSize
+        set
         {
-            get
-            {
-                return _itemXSize;
-            }
+            _data.maxItemStack = value;
         }
+    }
 
-        public eItemType ItemType
+    public int ItemPrice
+    {
+        get
         {
-            get
-            {
-                return _itemType;
-            }
+            return _data.itemPrice;
         }
-
-
-        public bool Drop(Vector3 targetPos)
+        set
         {
-            if (_prefab3D == null)
-            {
-                return false;
-            }
-
-            ItemBase tmp = Instantiate(_prefab3D, targetPos, Quaternion.identity, null).GetComponent<ItemBase>();
-
-            if (tmp == null)
-            {
-                Destroy(tmp.gameObject);
-                return false;
-            }
-
-            tmp.NowItemStack = _nowItemStack;
-
-            Destroy(gameObject);
-            return true;
+            _data.itemPrice = value;
         }
+    }
 
-        public void Pick(out ItemDataBundle itemDataBundle)
+    public int ItemRarity
+    {
+        get
         {
-            itemDataBundle.nowItemStack = _nowItemStack;
-            itemDataBundle.prefab2D = _prefab2D;
-            itemDataBundle.prefab3D = _prefab3D;
-            Destroy(gameObject);
+            return _data.itemRarity;
         }
+        set
+        {
+            _data.itemRarity = value;
+        }
+    }
+
+    public Vector2Int ItemSize
+    {
+        get
+        {
+            return _data.itemSize;
+        }
+    }
+
+    public bool IsEmpty()
+    {
+        return _data.nowItemStack <= 0;
+    }
+
+    public bool IsFull()
+    {
+        return _data.nowItemStack >= _data.maxItemStack;
+    }
+
+    public abstract void Pick(out ItemDataBundle itemDataBundle);
+
+    public virtual void Use(GameObject[] targets) { }
+
+    public abstract void Drop(Vector3 targetPos, in ItemDataBundle itemData);
+
+    public ItemDataBundle GetItemDataBundle()
+    {
+        return _data;
+    }
+
+    public void SetItemDataBundle(ItemDataBundle bundle)
+    {
+        _data = bundle;
     }
 }

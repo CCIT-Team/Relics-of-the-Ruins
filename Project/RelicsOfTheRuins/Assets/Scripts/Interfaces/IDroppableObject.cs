@@ -7,6 +7,6 @@ namespace RelicsOfTheRuins.Interfaces
 {
     public interface IDroppableObject
     {
-        public bool Drop(Vector3 targetPos);
+        public void Drop(Vector3 targetPos, in ItemDataBundle itemData);
     }
 }
