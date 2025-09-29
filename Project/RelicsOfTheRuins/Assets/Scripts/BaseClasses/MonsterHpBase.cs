@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class HpBase : MonoBehaviour
+public class MonsterHpBase : MonoBehaviour
 {
     protected IMonsterStats _monsterStats;
     protected float _hp;
