@@ -10,6 +10,7 @@ public abstract class WeaponBase : ItemBase
     protected float _cooldown = 0;
     [SerializeField]
     protected GameObject _attackAreaObject;
+    protected bool IsCooldownEnd{ get; private set; } = true;
 
     public abstract void Attack(float damageMultiplier);
 }
