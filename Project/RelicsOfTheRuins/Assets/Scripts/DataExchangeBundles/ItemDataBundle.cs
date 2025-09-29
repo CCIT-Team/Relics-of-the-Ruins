@@ -9,6 +9,7 @@ namespace RelicsOfTheRuins.DataExchangeBundles
         public GameObject prefab2D;
         public GameObject prefab3D;
         public Vector2Int itemSize;
+        public eItemTypes itemType;
         public int nowItemStack;
         public int maxItemStack;
         public int itemPrice;

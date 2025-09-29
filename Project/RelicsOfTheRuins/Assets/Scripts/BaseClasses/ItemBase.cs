@@ -12,6 +12,14 @@ public abstract class ItemBase : MonoBehaviour, IPickableObject, IUsableObject, 
     public string Name { get; set; }
     public string Description { get; set; }
 
+    public eItemTypes ItemType
+    {
+        get
+        {
+            return _data.itemType;
+        }
+    }
+
     public int NowItemStack
     {
         get
@@ -45,6 +53,14 @@ public abstract class ItemBase : MonoBehaviour, IPickableObject, IUsableObject, 
         set
         {
             _data.itemPrice = value;
+        }
+    }
+
+    public Vector2Int ItemSize
+    {
+        get
+        {
+            return _data.itemSize;
         }
     }
 
