@@ -76,6 +76,18 @@ public abstract class ItemBase : MonoBehaviour, IPickableObject, IUsableObject, 
         }
     }
 
+    public Vector2Int ItemInventoryOrigin
+    {
+        get
+        {
+            return _data.origin;
+        }
+        set
+        {
+            _data.origin = value;
+        }
+    }
+
     public bool IsEmpty()
     {
         return _data.nowItemStack <= 0;
