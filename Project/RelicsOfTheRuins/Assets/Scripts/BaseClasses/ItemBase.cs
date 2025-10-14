@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using RelicsOfTheRuins.DataExchangeBundles;
 using RelicsOfTheRuins.Interfaces;
 using UnityEngine;
@@ -96,6 +94,39 @@ public abstract class ItemBase : MonoBehaviour, IPickableObject, IUsableObject, 
     public bool IsFull()
     {
         return _data.nowItemStack >= _data.maxItemStack;
+    }
+
+
+    protected RectTransform _rt;
+
+    public void SetImgPosition(Vector3 pos)
+    {
+        if (_rt is null)
+        {
+            return;
+        }
+
+        _rt.position = pos;
+    }
+
+    public void SetImgParent(RectTransform parent)
+    {
+        if (_rt is null)
+        {
+            return;
+        }
+
+        _rt.SetParent(parent);
+    }
+
+    public void SetImgSize(int inventoryCellSize)
+    {
+        _rt.sizeDelta = new Vector2(ItemSize.x * inventoryCellSize, ItemSize.y * inventoryCellSize);
+    }
+
+    protected virtual void Awake()
+    {
+        _rt = GetComponent<RectTransform>();
     }
 
     public abstract void Pick(out ItemDataBundle itemDataBundle);
