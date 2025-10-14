@@ -99,14 +99,46 @@ public abstract class ItemBase : MonoBehaviour, IPickableObject, IUsableObject, 
 
     protected RectTransform _rt;
 
-    public void SetImgPosition(Vector3 pos)
+    public Vector3 ImgPosition
     {
-        if (_rt is null)
+        get
         {
-            return;
+            if (_rt is null)
+            {
+                return default;
+            }
+            return _rt.position;
         }
+        set
+        {
+            if (_rt is null)
+            {
+                return;
+            }
+            _rt.position = value;
+        }
+        
+    }
 
-        _rt.position = pos;
+    public Vector3 ImgLocalPosition
+    {
+        get
+        {
+            if (_rt is null)
+            {
+                return default;
+            }
+            return _rt.localPosition;
+        }
+        set
+        {
+            if (_rt is null)
+            {
+                return;
+            }
+            _rt.localPosition = value;
+        }
+        
     }
 
     public void SetImgParent(RectTransform parent)
