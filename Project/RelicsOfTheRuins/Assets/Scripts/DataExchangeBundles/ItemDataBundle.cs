@@ -6,8 +6,7 @@ namespace RelicsOfTheRuins.DataExchangeBundles
     [Serializable]
     public struct ItemDataBundle
     {
-        public GameObject prefab2D;
-        public GameObject prefab3D;
+        public PrefabBundle prefabs;
         public Vector2Int itemSize;
         public Vector2Int origin;
         public eItemTypes itemType;
