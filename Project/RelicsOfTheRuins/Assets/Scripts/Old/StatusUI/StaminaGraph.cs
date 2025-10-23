@@ -1,10 +1,10 @@
-using RelicsOfTheRuins.DataHub;
+
 using RelicsOfTheRuins.Utilities;
 using UnityEngine;
 
 namespace RelicsOfTheRuins.StatusUI
 {
-    public class HealthPointGrStaminaaph : ExplorerDataSubscriberObject
+    public class HealthPointGrStaminaaph : MonoBehaviour
     {
         private int _maxStaminaHalf;
         private int _maxStamina;
@@ -21,13 +21,6 @@ namespace RelicsOfTheRuins.StatusUI
         public int testStamina;
         public int testMaxStamina;
 
-
-        public override void ReceiveUpdate(GameObject explorer)
-        {
-            //스테미나 뽑아올 대상 변경하는 로직
-            //_hpSystem = explorer.GetComponent<StaminaSystem>();
-            Debug.Log("StaminaGraph does not implemented ReceiveUpdate\nPlease implement explorer Stamina class!");
-        }
 
         private void UpdateSize(int stamina)
         {
@@ -49,9 +42,8 @@ namespace RelicsOfTheRuins.StatusUI
             ColorCalculationUtils.CalculateVitalityColor(ref _color, _maxStaminaHalf, _maxStaminaHalf);
         }
 
-        protected override void Awake()
+        protected void Awake()
         {
-            base.Awake();
             _canvasRenderer = GetComponent<CanvasRenderer>();
             _recttransform = GetComponent<RectTransform>();
 

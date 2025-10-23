@@ -1,10 +1,12 @@
-using RelicsOfTheRuins.DataHub;
+
+#if false
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace RelicsOfTheRuins.StatusUI
 {
-    public class PolygonGraph : ExplorerDataSubscriberUIObject
+    public class PolygonGraph : MonoBehaviour
     {
         private const int _statusCnt = 6;
         private Vector2 _vertexPos;
@@ -18,12 +20,6 @@ namespace RelicsOfTheRuins.StatusUI
         {
             _status = status;
             SetAllDirty();
-        }
-
-        public override void ReceiveUpdate(GameObject explorer)
-        {
-            //스탯 뽑아와서 업데이트하는 로직
-            Debug.Log("PloygonGraph does not implemented ReceiveUpdate\nPlease implement explorer status!");
         }
 
         protected override void OnPopulateMesh(VertexHelper vh)
@@ -67,3 +63,4 @@ namespace RelicsOfTheRuins.StatusUI
         }
     }
 }
+#endif

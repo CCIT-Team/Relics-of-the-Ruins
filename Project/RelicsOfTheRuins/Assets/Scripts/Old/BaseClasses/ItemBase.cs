@@ -1,4 +1,4 @@
-using RelicsOfTheRuins.DataExchangeBundles;
+
 using RelicsOfTheRuins.Interfaces;
 using UnityEngine;
 
@@ -10,49 +10,15 @@ public abstract class ItemBase : MonoBehaviour, IPickableObject, IUsableObject, 
     public string Name { get; set; }
     public string Description { get; set; }
 
-    public eItemTypes ItemType
-    {
-        get
-        {
-            return _data.itemType;
-        }
-    }
+    // public eItemTypes ItemType
+    // {
+    //     get
+    //     {
+    //         return _data.itemType;
+    //     }
+    // }
+    // //이거는 나중에 타입 만들어서 넣으면 되고
 
-    public int NowItemStack
-    {
-        get
-        {
-            return _data.nowItemStack;
-        }
-        set
-        {
-            _data.nowItemStack = value;
-        }
-    }
-
-    public int MaxItemStack
-    {
-        get
-        {
-            return _data.maxItemStack;
-        }
-        set
-        {
-            _data.maxItemStack = value;
-        }
-    }
-
-    public int ItemPrice
-    {
-        get
-        {
-            return _data.itemPrice;
-        }
-        set
-        {
-            _data.itemPrice = value;
-        }
-    }
 
     public int ItemRarity
     {
@@ -84,16 +50,6 @@ public abstract class ItemBase : MonoBehaviour, IPickableObject, IUsableObject, 
         {
             _data.origin = value;
         }
-    }
-
-    public bool IsEmpty()
-    {
-        return _data.nowItemStack <= 0;
-    }
-
-    public bool IsFull()
-    {
-        return _data.nowItemStack >= _data.maxItemStack;
     }
 
 
@@ -177,3 +133,5 @@ public abstract class ItemBase : MonoBehaviour, IPickableObject, IUsableObject, 
         _data = bundle;
     }
 }
+
+//아이템도 그냥 한 스크립트로 하지 말고, 3d,2d로 나눠서 해

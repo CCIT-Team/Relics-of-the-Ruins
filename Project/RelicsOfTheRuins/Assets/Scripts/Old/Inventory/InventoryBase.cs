@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using RelicsOfTheRuins.DataExchangeBundles;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -28,7 +27,6 @@ namespace Inventory
 
         protected InventorySlotBase[,] _slots;
 
-        //drop, use같은것도 써야지
         public void MakeInventory(Vector2Int cellCnt, Vector2Int cellSize, Vector3 pos)
         {
             _gridPos = pos;
@@ -51,14 +49,13 @@ namespace Inventory
 
         public abstract bool PlaceItem(ItemBase item, Vector2Int gridPos);
         public abstract List<ItemDataBundle> ExtractAllItems();
-        //사용, drop만들기
 
         public abstract bool Use(Vector2Int gridPos);
         public abstract bool Drop(Vector2Int gridPos);
 
 
         protected abstract void AllocateInventorySlots();
-        //이거도 고치기
+
         void OnEnable()
         {
             if(_inventoryRoot is null || _inventoryRoot.IsDestroyed())
@@ -76,9 +73,5 @@ namespace Inventory
             }
             _inventoryRoot.SetActive(false);
         }
-
-        
-
-
     }
 }

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using RelicsOfTheRuins.DataExchangeBundles;
 using UnityEngine;
 using RelicsOfTheRuins.Utilities;
 
@@ -117,7 +116,7 @@ namespace Inventory
 
             picked.Use(new GameObject[4] { this.gameObject, null, null, null });
 
-            if(picked.IsEmpty())
+            //if(picked.IsEmpty())
             {
                 ItemDataBundle bundle = picked.GetItemDataBundle();
 

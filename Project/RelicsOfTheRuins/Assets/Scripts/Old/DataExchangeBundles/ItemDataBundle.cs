@@ -1,18 +1,14 @@
+
 using System;
 using UnityEngine;
 
-namespace RelicsOfTheRuins.DataExchangeBundles
+[Serializable]
+public struct ItemDataBundle
 {
-    [Serializable]
-    public struct ItemDataBundle
-    {
-        public PrefabBundle prefabs;
-        public Vector2Int itemSize;
-        public Vector2Int origin;
-        public eItemTypes itemType;
-        public int nowItemStack;
-        public int maxItemStack;
-        public int itemPrice;
-        public int itemRarity;
-    }
+    public PrefabBundle prefabs;
+    public Vector2Int itemSize;
+    public Vector2Int origin;
+    //public eItemTypes itemType;
+    //public int itemPrice; 이거는 스탯 회복쪽으로 변경 가능할듯
+    public int itemRarity;
 }
