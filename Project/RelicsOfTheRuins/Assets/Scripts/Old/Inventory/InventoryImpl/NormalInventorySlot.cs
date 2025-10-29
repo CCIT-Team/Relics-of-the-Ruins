@@ -1,9 +1,9 @@
 
 
-namespace Inventory
-{
-    public class NormalInventorySlot : InventorySlotBase
-    {
+// namespace Inventory
+// {
+//     public class NormalInventorySlot : InventorySlotBase
+//     {
         
-    }
-}
+//     }
+// }

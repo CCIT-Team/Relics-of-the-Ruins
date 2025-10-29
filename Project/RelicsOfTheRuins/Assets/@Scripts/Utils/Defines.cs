@@ -52,4 +52,9 @@ namespace Utils.Defines
 
     }
 
+    public enum ObjectType
+    {
+        
+    }
+
 }
